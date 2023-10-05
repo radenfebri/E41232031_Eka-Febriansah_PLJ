@@ -15,11 +15,8 @@ Route::redirect('/', 'login')->name('index');
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
-Route::get('dashboard', [BackendDashboardController::class, 'index'])->name('dashboard');
-
-// Route::get('login', [BelajarController::class, 'login'])->name('login');
-
 Route::middleware(['ceklogin'])->group(function () {
+    Route::get('dashboard', [BackendDashboardController::class, 'index'])->name('dashboard');
     Route::resource('pengalaman-kerja', PengalamanKerjaController::class);
 });
 
