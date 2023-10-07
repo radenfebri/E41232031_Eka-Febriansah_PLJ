@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\PengalamanKerja;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PengalamanKerjaController extends Controller
 {
@@ -35,6 +36,7 @@ class PengalamanKerjaController extends Controller
 
         PengalamanKerja::create($request->all());
 
+        Alert::success('Berhasil', 'Data berhasil ditambhakan');
         return back();
     }
 
@@ -45,6 +47,7 @@ class PengalamanKerjaController extends Controller
         $data = PengalamanKerja::findOrFail(decrypt($id));
         $data->delete();
 
+        Alert::success('Berhasil', 'Data berhasil dihapus');
         return back();
     }
 
@@ -76,6 +79,7 @@ class PengalamanKerjaController extends Controller
 
         $data->update($request->all());
 
+        Alert::success('Berhasil', 'Data berhasil diupdate');
         return redirect()->route('pengalaman-kerja.index');
     }
 

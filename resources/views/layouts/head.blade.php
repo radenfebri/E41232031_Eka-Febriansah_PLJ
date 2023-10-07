@@ -23,7 +23,6 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="{{ asset('template-dashboard') }}/css/demo.css">
 	
-	
     @vite([])
 
 </head>

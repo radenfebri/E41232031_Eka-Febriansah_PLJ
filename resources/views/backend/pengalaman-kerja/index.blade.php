@@ -56,9 +56,9 @@
                                                             <label>Nama Perusahaan <span style="color: red">*</span></label>
                                                             <input name="nama" type="text" class="form-control @error ('nama') is-invalid @enderror" value="{{ old('nama') }}" placeholder="Nama Perusahaan" >
                                                             @error('nama')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -67,21 +67,21 @@
                                                             <label>Jabatan <span style="color: red">*</span></label>
                                                             <input name="jabatan" type="text" class="form-control @error ('jabatan') is-invalid @enderror" value="{{ old('jabatan') }}" placeholder="Jabatan" >
                                                             @error('jabatan')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pr-0">
                                                         <div class="form-group form-group-default">
                                                             <label>Tahun Masuk <span style="color: red">*</span></label>
-                                                            <input type="number" name="tahun_masuk" class="form-control @error ('tahun_masuk') is-invalid @enderror" value="{{ old('tahun_masuk') }}" placeholder="20xx">
+                                                            <input type="text" name="tahun_masuk" id="tahun" class="form-control @error ('tahun_masuk') is-invalid @enderror" value="{{ old('tahun_masuk') }}" placeholder="20xx">
                                                             @error('tahun_masuk')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
-                                                        @enderror
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -92,7 +92,7 @@
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
-                                                        @enderror
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -130,25 +130,25 @@
                                     </tfoot>
                                     <tbody>
                                         @foreach ($data as $no => $item)
-                                            <tr>
-                                                <td>{{ $no + 1 }} </td>
-                                                <td>{{ $item->nama }} </td>
-                                                <td>{{ $item->jabatan }} </td>
-                                                <td>{{ $item->tahun_masuk }} </td>
-                                                <td>{{ $item->tahun_keluar }} </td>
-                                                <td>
-                                                    <div class="form-button-action">
-                                                        <a href="{{ route('pengalaman-kerja.edit', encrypt($item->id)) }}" type="button" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Pengalaman">
-                                                            <i class="fa fa-edit"></i>
-                                                        </a>
-                                                        
-                                                        <a href="{{ route('pengalaman-kerja.destroy', encrypt($item->id)) }}" method="POST" type="button" data-toggle="tooltip" class="btn btn-link btn-danger btn-lg" data-original-title="Hapus Pengalaman"
-                                                            onclick="return confirm('Apakah anda yakin menghapus perusahaan {{ $item->nama }} ?')">
-                                                            <i class="fa fa-times"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>{{ $no + 1 }} </td>
+                                            <td>{{ $item->nama }} </td>
+                                            <td>{{ $item->jabatan }} </td>
+                                            <td>{{ $item->tahun_masuk }} </td>
+                                            <td>{{ $item->tahun_keluar }} </td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <a href="{{ route('pengalaman-kerja.edit', encrypt($item->id)) }}" type="button" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Pengalaman">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    
+                                                    <a href="{{ route('pengalaman-kerja.destroy', encrypt($item->id)) }}" method="POST" type="button" data-toggle="tooltip" class="btn btn-link btn-danger btn-lg" data-original-title="Hapus Pengalaman"
+                                                        onclick="return confirm('Apakah anda yakin menghapus perusahaan {{ $item->nama }} ?')">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -158,15 +158,20 @@
                 </div>
             </div>
             
-        @include('layouts.footer')
+            @include('layouts.footer')
+            
+        </div>
         
-    </div>
-
-
-    {{-- <script type="text/javascript">
-        $(function() {
-            $( "#tahun_masuk" ).datepicker({dateFormat: 'yy'});
-        });
-    </script> --}}
-    
-    @endsection
+        
+        <script>
+            $(document).ready(function() {
+                $("#tahun").datepicker({
+                    dateFormat: "yy",
+                    changeYear: true,
+                    showButtonPanel: true,
+                    yearRange: "1900:{{ date('Y') }}", // Sesuaikan dengan tahun yang diinginkan
+                });
+            });
+        </script>
+        
+        @endsection
