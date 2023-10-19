@@ -9,7 +9,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item {{ request()->is('pengalaman-kerja','pengalaman-kerja/*') ? 'active' : ''}}">
+                <li class="nav-item {{ request()->is('pengalaman-kerja','pengalaman-kerja/*', 'pendidikan','pendidikan/*') ? 'active' : ''}}">
                     <a data-toggle="collapse" href="#base1">
                         <i class="fas fa-id-card"></i>
                         <p>Riwayat Hidup</p>
@@ -21,9 +21,9 @@
                                 <a href="{{ route('pengalaman-kerja.index') }}">
                                     <span class="sub-item">Pengalaman Kerja</span>
                                 </a>
-                                {{-- <a href="#">
-                                    <span class="sub-item">PPPoE Profile</span>
-                                </a> --}}
+                                <a href="{{ route('pendidikan.index') }}">
+                                    <span class="sub-item">Pendidikan</span>
+                                </a>
                             </li>
                         </ul>
                     </div>

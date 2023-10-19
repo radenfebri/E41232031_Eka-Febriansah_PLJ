@@ -21,8 +21,8 @@ class PengalamanKerjaController extends Controller
         $request->validate([
             'nama' => 'required|string|max:50',
             'jabatan' => 'required|string|max:50',
-            'tahun_masuk' => 'required|integer|min:1900|max:3000',
-            'tahun_keluar' => 'required|integer|min:1900|max:3000',
+            'tahun_masuk' => 'required|integer',
+            'tahun_keluar' => 'required|integer',
         ]);
 
         // dd($request);
