@@ -188,7 +188,7 @@
         </div>
         
         
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $("#tahun").datepicker({
                     dateFormat: "yy",
@@ -197,6 +197,6 @@
                     yearRange: "1900:{{ date('Y') }}", // Sesuaikan dengan tahun yang diinginkan
                 });
             });
-        </script>
+        </script> --}}
         
         @endsection
