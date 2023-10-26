@@ -21,15 +21,13 @@
             <div class="notfound-404">
                 <h1>@yield('code')</h1>
             </div>
-            <h2>We are sorry, Page error!</h2>
+            <h2>@yield('title')</h2>
             <p>@yield('message')</p>
-            @guest
-                <a href="{{ route('login') }}">Back To Login</a>
-            @endguest
-
-            @auth
-                <a href="{{ route('dashboard') }}">Back To Dashbord</a>
-            @endauth
+                @if (Auth::check())
+                    <a href="{{ route('login') }}">Kembali ke Login</a>
+                @else
+                    <a href="{{ route('dashboard') }}">Kembali ke Dashbord</a>
+                @endif
             </div>
         </div>
         
