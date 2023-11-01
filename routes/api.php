@@ -21,17 +21,20 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-
+// AUTH 
 Route::post('auth/register', [AuthController::class, 'register'])->name('register');
 Route::post('auth/login', [AuthController::class, 'login'])->name('login');
 Route::middleware(['auth:sanctum'])->group(function () {
+    // GET DATA LOGIN
     Route::get('auth/show', [AuthController::class, 'show'])->name('show');
+
+    // CRUD PENGALAMAN KERJA
+    Route::get('pengalaman-kerja', [PengalamanKerjaController::class, 'show'])->name('show-pengalaman');
+    Route::get('pengalaman-kerja/{id}', [PengalamanKerjaController::class, 'getid'])->name('getid-pengalaman');
+    Route::post('pengalaman-kerja/create', [PengalamanKerjaController::class, 'create'])->name('create-pengalaman');
+    Route::put('pengalaman-kerja/{id}/update', [PengalamanKerjaController::class, 'update'])->name('update-pengalaman');
+    Route::delete('pengalaman-kerja/{id}/delete', [PengalamanKerjaController::class, 'delete'])->name('delete-pengalaman');
 });
-Route::get('pengalaman-kerja', [PengalamanKerjaController::class, 'show'])->name('show-pengalaman');
-Route::get('pengalaman-kerja/{id}', [PengalamanKerjaController::class, 'getid'])->name('getid-pengalaman');
-Route::post('pengalaman-kerja/create', [PengalamanKerjaController::class, 'create'])->name('create-pengalaman');
-Route::put('pengalaman-kerja/{id}/update', [PengalamanKerjaController::class, 'update'])->name('update-pengalaman');
-Route::delete('pengalaman-kerja/{id}/delete', [PengalamanKerjaController::class, 'delete'])->name('delete-pengalaman');
 
 // Route::group(['prefix' => 'auth', 'middleware' => 'auth:sanctum', 'verify' => true], function () {
 //     Route::post('user', [AuthController::class, 'show'])->name('show');

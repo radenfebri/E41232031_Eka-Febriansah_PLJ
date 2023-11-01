@@ -12,20 +12,27 @@ class PengalamanKerjaController extends Controller
     // GET DATA
     public function show()
     {
-        $data = PengalamanKerja::latest()->get();
+        try {
+            $data = PengalamanKerja::latest()->get();
 
-        if (!$data) {
+            if (!$data) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Not found',
+                ], 404);
+            }
+
+            return response()->json([
+                'status' => true,
+                'data' => $data,
+                'message' => 'Data Pengalaman Kerja',
+            ], 200);
+        } catch (\Throwable $th) {
             return response()->json([
                 'status' => false,
-                'message' => 'Not found',
-            ], 404);
+                'message' => $th->getMessage(),
+            ], 500);
         }
-
-        return response()->json([
-            'status' => true,
-            'data' => $data,
-            'message' => 'Data Pengalaman Kerja',
-        ], 200);
     }
 
     // GET DATA ID
