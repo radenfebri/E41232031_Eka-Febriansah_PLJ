@@ -14,7 +14,18 @@ class PengalamanKerjaController extends Controller
     {
         $data = PengalamanKerja::latest()->get();
 
-        return response()->json($data);
+        if (!$data) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Not found',
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $data,
+            'message' => 'Data Pengalaman Kerja',
+        ], 200);
     }
 
     // GET DATA ID
@@ -25,7 +36,7 @@ class PengalamanKerjaController extends Controller
         if (!$id) {
             return response()->json([
                 'status' => false,
-                'message' => 'Not found',
+                'message' => 'Data not found',
             ], 404);
         }
 
@@ -79,7 +90,7 @@ class PengalamanKerjaController extends Controller
         if (!$data) {
             return response()->json([
                 'status' => false,
-                'message' => 'User not found',
+                'message' => 'Data not found',
             ], 404);
         }
 
@@ -108,7 +119,7 @@ class PengalamanKerjaController extends Controller
         if (!$data) {
             return response()->json([
                 'status' => false,
-                'message' => 'User not found',
+                'message' => 'Data not found',
             ], 404);
         }
 
@@ -117,7 +128,7 @@ class PengalamanKerjaController extends Controller
         return response()->json([
             'status' => true,
             'data' => $data,
-            'message' => 'Pengalaman kerja data updated successfully',
+            'message' => 'Pengalaman kerja data deleted successfully',
         ], 200);
     }
 }

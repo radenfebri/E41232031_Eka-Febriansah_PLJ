@@ -30,8 +30,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::get('pengalaman-kerja', [PengalamanKerjaController::class, 'show'])->name('show-pengalaman');
 Route::get('pengalaman-kerja/{id}', [PengalamanKerjaController::class, 'getid'])->name('getid-pengalaman');
 Route::post('pengalaman-kerja/create', [PengalamanKerjaController::class, 'create'])->name('create-pengalaman');
-Route::post('pengalaman-kerja/{id}/update', [PengalamanKerjaController::class, 'update'])->name('update-pengalaman');
-Route::post('pengalaman-kerja/{id}/delete', [PengalamanKerjaController::class, 'delete'])->name('delete-pengalaman');
+Route::put('pengalaman-kerja/{id}/update', [PengalamanKerjaController::class, 'update'])->name('update-pengalaman');
+Route::delete('pengalaman-kerja/{id}/delete', [PengalamanKerjaController::class, 'delete'])->name('delete-pengalaman');
 
 // Route::group(['prefix' => 'auth', 'middleware' => 'auth:sanctum', 'verify' => true], function () {
 //     Route::post('user', [AuthController::class, 'show'])->name('show');
